@@ -21,8 +21,6 @@ public class SingInServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
-		pw.write("<h1>Sing In</h1>");
-		
 	}
 
 	@Override

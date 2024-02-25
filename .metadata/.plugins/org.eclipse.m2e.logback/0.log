@@ -8026,3 +8026,49 @@ java.io.FileNotFoundException: /Users/fanyang/eclipse-workspace/.metadata/.plugi
 2024-02-25 18:12:37,686 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources
 2024-02-25 18:12:37,785 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src/main/resources to target/classes
 2024-02-25 18:12:37,787 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web-servlet-redirect-forward/src/test/resources
+2024-02-25 19:10:40,838 [Worker-25: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2024-02-25 19:10:41,074 [Worker-25: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: LEARN:JAVA1:0.0.1-SNAPSHOT @ /Users/fanyang/JAVAreview/JAVA1/pom.xml.
+2024-02-25 19:10:41,093 [Worker-25: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: HongZe:web:0.0.1-SNAPSHOT @ /Users/fanyang/JAVAreview/web/pom.xml.
+2024-02-25 19:10:41,147 [Worker-25: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.itranswarp.learnjava:web-servlet-redirect-forward:1.0-SNAPSHOT @ /Users/fanyang/JAVAreview/web-servlet-redirect-forward/pom.xml.
+2024-02-25 19:10:41,290 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /JAVA1/src/main/java
+2024-02-25 19:10:41,290 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /JAVA1/src/main/resources
+2024-02-25 19:10:41,290 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /JAVA1/src/test/java
+2024-02-25 19:10:41,290 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /JAVA1/src/test/resources
+2024-02-25 19:10:41,291 [Worker-25: Updating Maven Project] ERROR o.e.m.j.i.AbstractJavaProjectConfigurator - Failed to find a compatible VM for environment id 'JavaSE-20', falling back to workspace default
+2024-02-25 19:10:41,311 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web/src/main/java
+2024-02-25 19:10:41,311 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web/src/main/resources
+2024-02-25 19:10:41,311 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web/src/test/java
+2024-02-25 19:10:41,311 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web/src/test/resources
+2024-02-25 19:10:41,311 [Worker-25: Updating Maven Project] ERROR o.e.m.j.i.AbstractJavaProjectConfigurator - Failed to find a compatible VM for environment id 'JavaSE-17', falling back to workspace default
+2024-02-25 19:10:41,321 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web-servlet-redirect-forward/src/main/java
+2024-02-25 19:10:41,321 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web-servlet-redirect-forward/src/main/resources
+2024-02-25 19:10:41,321 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /web-servlet-redirect-forward/src/test/java
+2024-02-25 19:10:41,321 [Worker-25: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /web-servlet-redirect-forward/src/test/resources
+2024-02-25 19:10:41,321 [Worker-25: Updating Maven Project] ERROR o.e.m.j.i.AbstractJavaProjectConfigurator - Failed to find a compatible VM for environment id 'JavaSE-17', falling back to workspace default
+2024-02-25 19:10:41,375 [Worker-25: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 3 poms: local refresh takes 0.00 sec, refresh facades takes 0.00 sec, update config takes 0.00 sec 
+2024-02-25 19:10:41,569 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:10:41,570 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/JAVA1/src/main/resources
+2024-02-25 19:10:41,570 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:10:41,571 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/JAVA1/src/test/resources
+2024-02-25 19:10:41,657 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:10:41,657 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/main/resources
+2024-02-25 19:10:41,658 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:10:41,658 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources
+2024-02-25 19:10:41,684 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src/main/resources to target/classes
+2024-02-25 19:10:41,685 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web-servlet-redirect-forward/src/test/resources
+2024-02-25 19:21:01,287 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:21:01,287 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/main/resources
+2024-02-25 19:21:01,288 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:21:01,288 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources
+2024-02-25 19:21:02,303 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:21:02,303 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/main/resources
+2024-02-25 19:21:02,304 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:21:02,304 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources
+2024-02-25 19:22:25,064 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:22:25,065 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/main/resources
+2024-02-25 19:22:25,065 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:22:25,065 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources
+2024-02-25 19:22:54,528 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:22:54,529 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/main/resources
+2024-02-25 19:22:54,529 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2024-02-25 19:22:54,529 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/fanyang/JAVAreview/web/src/test/resources

@@ -1,7 +1,6 @@
 package HongZe.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Map;
 
 import jakarta.servlet.ServletException;
@@ -20,9 +19,6 @@ public class SingInServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/html");
-		PrintWriter pw = resp.getWriter();
-		pw.write("<h1>Sing In</h1>");
-		
 	}
 
 	@Override
