@@ -22,7 +22,7 @@ public class SingInServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
 		pw.write("<h1>Sing In</h1>");
-		pw.write("<form action=\"/signin\" method=\"post\">");
+		pw.write(getServletInfo())
 	}
 
 	@Override
