@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=JAVA1/\/Library\/Java\/JavaVirtualMachines\/jdk-21.jdk\/Contents\/Home\/lib\/jrt-fs.jar`java.desktop=/maven.pomderived=/true=/&lt;javax.swing(JFrame.class[JFrame" modifiers="33" timestamp="1696513367000"/>
+    <typeInfo handle="=JAVA1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;Observer{Observable.java[Observable" modifiers="513" timestamp="1707991510000"/>
+    <typeInfo handle="=JAVA1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;state{State.java[State" modifiers="513" timestamp="1708000003000"/>
+    <typeInfo handle="=JAVA1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;strategy{DiscountStrategy.java[DiscountStrategy" modifiers="513" timestamp="1708046105000"/>
+    <typeInfo handle="=JAVA1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;visitor{Visitor.java[Visitor" modifiers="513" timestamp="1708076528000"/>
+    <typeInfo handle="=JAVA1/\/Library\/Java\/JavaVirtualMachines\/jdk-21.jdk\/Contents\/Home\/lib\/jrt-fs.jar`java.desktop=/maven.pomderived=/true=/&lt;java.awt(Frame.class[Frame" modifiers="33" timestamp="1696513367000"/>
+    <typeInfo handle="=web/\/Users\/fanyang\/.m2\/repository\/jakarta\/servlet\/jakarta.servlet-api\/5.0.0\/jakarta.servlet-api-5.0.0.jar=/maven.pomderived=/true=/=/maven.groupId=/jakarta.servlet=/=/maven.artifactId=/jakarta.servlet-api=/=/maven.version=/5.0.0=/=/maven.scope=/provided=/=/maven.pomderived=/true=/&lt;jakarta.servlet.http(HttpServlet.class[HttpServlet" modifiers="1057" timestamp="1708336937000"/>
+</typeInfoHistroy>

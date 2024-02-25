@@ -1,0 +1,14 @@
+package HongZe.web;
+
+import org.apache.catalina.startup.Tomcat;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Tomcat tomcat = new Tomcat();
+		tomcat.setPort(Integer.getInteger("port", 8080));
+		tomcat.start();
+	}
+
+}
