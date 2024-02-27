@@ -1,7 +1,7 @@
 # 忽略固定文件
 personal/
 # 忽略MAVEN编译产生的目录
-/target/
+target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
