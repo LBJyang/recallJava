@@ -1,7 +1,0 @@
-package HongZe.web;
-
-import jakarta.servlet.http.HttpServlet;
-
-public class RedirectServlet extends HttpServlet {
-
-}
