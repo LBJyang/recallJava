@@ -17,9 +17,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-		<java.version>17</java.version>
+		<maven.compiler.source>21.0.1</maven.compiler.source>
+		<maven.compiler.target>21.0.1</maven.compiler.target>
+		<java.version>21.0.1</java.version>
 	</properties>
 
 	<dependencies>
@@ -125,7 +125,7 @@
 								<!-- Classpath前缀 -->
 								<classpathPrefix>tmp-webapp/WEB-INF/lib/</classpathPrefix>
 								<!-- main启动类 -->
-								<mainClass>HongZe.web.Main</mainClass>
+								<mainClass>recallJava.web_mvc_pro.Main</mainClass>
 							</manifest>
 						</archive>
 					</configuration>
