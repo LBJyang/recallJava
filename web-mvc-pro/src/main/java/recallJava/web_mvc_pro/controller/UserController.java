@@ -1,13 +1,11 @@
 package recallJava.web_mvc_pro.controller;
 
-import java.awt.desktop.UserSessionEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import recallJava.web_mvc_pro.bean.SigninBean;

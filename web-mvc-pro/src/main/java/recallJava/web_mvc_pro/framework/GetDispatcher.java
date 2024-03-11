@@ -7,11 +7,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class GetDispatcher {
+public class GetDispatcher extends AbstractDispatcher {
 	Object instance;
 	Method method;
 	String[] parameterNames;
 	Class<?>[] parameterClasses;
+
+	public GetDispatcher(Object instance, Method method, String[] parameterNames, Class<?>[] parameterClasses) {
+		super();
+		this.instance = instance;
+		this.method = method;
+		this.parameterNames = parameterNames;
+		this.parameterClasses = parameterClasses;
+	}
 
 	public ModelAndView invoke(HttpServletRequest request, HttpServletResponse response)
 			throws IllegalAccessException, InvocationTargetException {
