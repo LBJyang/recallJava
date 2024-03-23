@@ -1,4 +1,4 @@
-package HongZe.springReview.JDBC;
+package HongZe.springReview.DAO;
 
 import javax.sql.DataSource;
 
@@ -17,9 +17,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
-import HongZe.springReview.DAO.UserServiceForDAO;
-import HongZe.springReview.service.User;
 
 @Configuration
 @PropertySource("jdbc.properties")
@@ -49,7 +46,7 @@ public class AppConfig {
 			System.out.println(e.getMessage());
 		}
 
-		for (HongZe.springReview.DAO.User u : userService.getUsers(1)) {
+		for (User u : userService.getUsers(1)) {
 			System.out.println(u);
 		}
 	}

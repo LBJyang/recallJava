@@ -1,73 +1,78 @@
-package HongZe.springReview.JDBC;
+package recallJava.spring_DAO;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import HongZe.springReview.DAO.UserServiceForDAO;
-import HongZe.springReview.service.User;
+import recallJava.spring_DAO.services.User;
+import recallJava.spring_DAO.services.UserService;
 
-@Configuration
-@PropertySource("jdbc.properties")
+@Configurable
 @ComponentScan
+@PropertySource("jdbc.properties")
 @EnableTransactionManagement
 public class AppConfig {
+
 	public static void main(String[] args) {
-		@SuppressWarnings("resource")
+		// TODO Auto-generated method stub
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		UserServiceForDAO userService = context.getBean(UserServiceForDAO.class);
+		UserService userService = context.getBean(UserService.class);
 		// 插入Bob:
 		if (userService.fetchUserByEmail("bob@example.com") == null) {
-			userService.register("bob@example.com", "Bob", "password1");
+			userService.register("bob@example.com", "password1", "Bob");
 		}
 		// 插入Alice:
 		if (userService.fetchUserByEmail("alice@example.com") == null) {
-			userService.register("alice@example.com", "Alice", "password2");
+			userService.register("alice@example.com", "password2", "Alice");
 		}
 		// 插入Tom:
 		if (userService.fetchUserByEmail("tom@example.com") == null) {
-			userService.register("tom@example.com", "Tom", "password2");
+			userService.register("tom@example.com", "password2", "Tom");
 		}
 		// 插入Root:
 		try {
-			userService.register("root@example.com", "root", "password3");
+			userService.register("root@example.com", "password3", "root");
 		} catch (RuntimeException e) {
 			System.out.println(e.getMessage());
 		}
-
-		for (HongZe.springReview.DAO.User u : userService.getUsers(1)) {
+		// 查询所有用户:
+		for (User u : userService.getUsers(1)) {
 			System.out.println(u);
 		}
+		((ConfigurableApplicationContext) context).close();
 	}
 
 	@Value("${jdbc.url}")
 	String jdbcUrl;
+
 	@Value("${jdbc.username}")
-	String userName;
+	String jdbcUsername;
+
 	@Value("${jdbc.password}")
-	String password;
+	String jdbcPassword;
 
 	@Bean
 	DataSource createDataSource() {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(jdbcUrl);
-		config.setUsername(userName);
-		config.setPassword(password);
-		config.addDataSourceProperty("autoCommit", "true");
+		config.setUsername(jdbcUsername);
+		config.setPassword(jdbcPassword);
+		config.addDataSourceProperty("autoCommit", "false");
 		config.addDataSourceProperty("connectionTimeout", "5");
 		config.addDataSourceProperty("idleTimeout", "60");
 		return new HikariDataSource(config);
@@ -79,7 +84,7 @@ public class AppConfig {
 	}
 
 	@Bean
-	PlatformTransactionManager createTxManager(@Autowired DataSource dataSource) {
+	TransactionManager createTxManager(@Autowired DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
 }

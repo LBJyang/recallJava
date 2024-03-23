@@ -1,4 +1,4 @@
-package HongZe.springReview.DAO;
+package recallJava.spring_DAO.DAO;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -21,54 +21,53 @@ public abstract class AbstractDAO<T> extends JdbcDaoSupport {
 	private RowMapper<T> rowMapper;
 
 	public AbstractDAO() {
-		// TODO Auto-generated constructor stub
-		this.entityClass = getParameteriedType();
+		this.entityClass = getParameterizedType();
 		this.table = this.entityClass.getSimpleName().toLowerCase() + "s";
 		this.rowMapper = new BeanPropertyRowMapper<>(entityClass);
-	}
-
-	public T getById(long id) {
-		return getJdbcTemplate().queryForObject("select * from " + table + " where id = ?", rowMapper, id);
-	}
-
-	public List<T> getAll(int pageIndex) {
-		int limit = 100;
-		int offset = limit * (pageIndex - 1);
-		return getJdbcTemplate().query("select * from " + table + " limit ? offset ?", rowMapper,
-				new Object[] { limit, offset });
-	}
-
-	public void deleteById(long id) {
-		getJdbcTemplate().update("delete from " + table + " where id = ?", id);
-	}
-
-	public RowMapper<T> getRowMapper() {
-		return rowMapper;
-	}
-
-	@SuppressWarnings("unchecked")
-	private Class<T> getParameteriedType() {
-		// TODO Auto-generated method stub
-		Type type = getClass().getGenericSuperclass();
-		if (!(type instanceof ParameterizedType)) {
-			throw new IllegalArgumentException("Class " + getClass().getName() + " do not have parameterized type.");
-		}
-		ParameterizedType pt = (ParameterizedType) type;
-		Type[] types = pt.getActualTypeArguments();
-		if (types.length != 1) {
-			throw new IllegalArgumentException(
-					"Class " + getClass().getName() + " have more than 1 parameterized type.");
-		}
-		Type r = types[0];
-		if (!(r instanceof Class<?>)) {
-			throw new IllegalArgumentException(
-					"Class " + getClass().getName() + " does not have parameterized type of class");
-		}
-		return (Class<T>) r;
 	}
 
 	@PostConstruct
 	public void init() {
 		super.setJdbcTemplate(jdbcTemplate);
+	}
+
+	public T getById(long id) {
+		return getJdbcTemplate().queryForObject("SELECT * FROM " + table + " WHERE id = ?", this.rowMapper, id);
+	}
+
+	public List<T> getAll(int pageIndex) {
+		int limit = 100;
+		int offset = limit * (pageIndex - 1);
+		return getJdbcTemplate().query("SELECT * FROM " + table + " LIMIT ? OFFSET ?", this.rowMapper,
+				new Object[] { limit, offset });
+	}
+
+	public void deleteById(long id) {
+		getJdbcTemplate().update("DELETE FROM " + table + " WHERE id = ?", id);
+	}
+
+	public RowMapper<T> getRowMapper() {
+		return this.rowMapper;
+	}
+
+	@SuppressWarnings("unchecked")
+	private Class<T> getParameterizedType() {
+		// TODO Auto-generated method stub
+		Type type = getClass().getGenericSuperclass();
+		if (!(type instanceof ParameterizedType)) {
+			throw new IllegalArgumentException("Class " + getClass().getName() + " does not have parameterized type.");
+		}
+		ParameterizedType pt = (ParameterizedType) type;
+		Type[] types = pt.getActualTypeArguments();
+		if (types.length != 1) {
+			throw new IllegalArgumentException(
+					"Class " + getClass().getName() + " has more than 1 parameterized types.");
+		}
+		Type r = types[0];
+		if (!(r instanceof Class<?>)) {
+			throw new IllegalArgumentException(
+					"Class " + getClass().getName() + " does not have parameterized type of class.");
+		}
+		return (Class<T>) r;
 	}
 }
