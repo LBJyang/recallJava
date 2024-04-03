@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,7 +29,7 @@ import recallJava.web_mvc_pro.controller.UserController;
 public class DispatchServlet extends HttpServlet {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private Map<String, GetDispatcher> getMappings = new HashMap<>();
-	private Map<String, PostDispatcher> postMappings = new HashMap<String, PostDispatcher>();
+	private Map<String, PostDispatcher> postMappings = new HashMap<>();
 	private ViewEngine viewEngine;
 
 	private List<Class<?>> controllers = List.of(UserController.class, IndexController.class);
