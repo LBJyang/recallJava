@@ -12,6 +12,8 @@ import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +31,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import HongZe.springMVC.orm.MyTemplate;
+import HongZe.springMVC.service.UserService;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.loader.Servlet5Loader;
 import io.pebbletemplates.spring.servlet.PebbleViewResolver;
@@ -41,6 +44,11 @@ import jakarta.servlet.ServletContext;
 @PropertySource("classpath:/jdbc.properties")
 public class AppConfig {
 	public static void main(String args[]) throws LifecycleException {
+//		@SuppressWarnings("resource")
+//		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//		UserService userService = context.getBean(UserService.class);
+//		userService.register("yangjiaze@dmail.com", "jiaze", "jiaze");
+
 		Tomcat tomcat = new Tomcat();
 		tomcat.setPort(Integer.getInteger("port", 8080));
 		tomcat.getConnector();

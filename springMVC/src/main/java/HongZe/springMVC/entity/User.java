@@ -3,6 +3,8 @@
  */
 package HongZe.springMVC.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -27,6 +29,7 @@ public class User extends AbstractEntity {
 	}
 
 	@Column(nullable = false, length = 100)
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}

@@ -1,15 +1,12 @@
 package HongZe.springMVC.service;
 
-import java.sql.Statement;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import HongZe.springMVC.entity.User;
@@ -23,6 +20,10 @@ public class UserService {
 	MyTemplate myTemplate;
 
 	RowMapper<User> userRowMapper = new BeanPropertyRowMapper<>(User.class);
+
+	public List<User> getUsers() {
+		return myTemplate.fetchAll(User.class);
+	}
 
 	public User getUserById(long id) {
 		return myTemplate.fetch(User.class, id);

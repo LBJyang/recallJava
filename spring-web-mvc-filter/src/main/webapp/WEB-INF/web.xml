@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <web-app>
-	<dispaly-name>My Web App</dispaly-name>
+	<display-name>Archetype Created Web Application</display-name>
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -32,17 +32,14 @@
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextClass</param-name>
-			<param-value>
-				org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-			</param-value>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>HongZe.springMVC.AppConfig</param-value>
+			<param-value>com.itranswarp.learnjava.AppConfig</param-value>
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>

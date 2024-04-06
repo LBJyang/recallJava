@@ -81,6 +81,12 @@ public class MyTemplate {
 		return classes;
 	}
 
+	public <T> List<T> fetchAll(Class<T> clazz) {
+		Mapper<T> mapper = getMapper(clazz);
+		List<T> list = jdbcTemplate.query("select * from " + mapper.tableName, mapper.rowMapper);
+		return list;
+	}
+
 	/**
 	 * Get an instance from class by id,return null if not found.
 	 * 
