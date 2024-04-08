@@ -22,8 +22,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -44,11 +47,6 @@ import jakarta.servlet.ServletContext;
 @PropertySource("classpath:/jdbc.properties")
 public class AppConfig {
 	public static void main(String args[]) throws LifecycleException {
-//		@SuppressWarnings("resource")
-//		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-//		UserService userService = context.getBean(UserService.class);
-//		userService.register("yangjiaze@dmail.com", "jiaze", "jiaze");
-
 		Tomcat tomcat = new Tomcat();
 		tomcat.setPort(Integer.getInteger("port", 8080));
 		tomcat.getConnector();
@@ -91,13 +89,28 @@ public class AppConfig {
 	}
 
 	@Bean
-	WebMvcConfigurer createWebMvcConfigurer() {
+	WebMvcConfigurer createWebMvcConfigurer(@Autowired HandlerInterceptor[] interceptors) {
 		return new WebMvcConfigurer() {
+			@Override
+			public void addInterceptors(InterceptorRegistry registry) {
+				// TODO Auto-generated method stub
+				for (HandlerInterceptor handlerInterceptor : interceptors) {
+					registry.addInterceptor(handlerInterceptor);
+				}
+			}
+
 			@Override
 			public void addResourceHandlers(ResourceHandlerRegistry registry) {
 				// TODO Auto-generated method stub
 				WebMvcConfigurer.super.addResourceHandlers(registry);
 				registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+			}
+
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				// TODO Auto-generated method stub
+				registry.addMapping("/api/**").allowedOrigins("http://local.liaoxuefeng.com:8080")
+						.allowedHeaders("GET", "POST").maxAge(3600);
 			}
 		};
 	}

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -24,6 +25,11 @@ public class UserController {
 	final Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	UserService userService;
+
+	@ExceptionHandler(RuntimeException.class)
+	private ModelAndView handleUnknowException(Exception ex) {
+		return new ModelAndView("500.html", Map.of("error", ex.getClass().getSimpleName(), "message", ex.getMessage()));
+	}
 
 	@GetMapping("/")
 	public ModelAndView index(HttpSession httpSession) {
@@ -64,15 +70,6 @@ public class UserController {
 		httpSession.setAttribute(KEY_USER, user);
 		return new ModelAndView("redirect:/profile");
 	}
-
-//	@GetMapping("/profile")
-//	public ModelAndView profile(HttpSession session) {
-//		User user = (User) session.getAttribute(KEY_USER);
-//		if (user == null) {
-//			return new ModelAndView("redirect:/signin");
-//		}
-//		return new ModelAndView("profile.html	", Map.of("user", user));
-//	}
 
 	@GetMapping("/profile")
 	public ModelAndView profile(HttpSession session) {
