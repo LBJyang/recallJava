@@ -15,7 +15,7 @@ import HongZe.springMVC.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
+//@Component
 @Order(2)
 public class AuthInterceptor implements HandlerInterceptor {
 	final Logger logger = LoggerFactory.getLogger(getClass());
