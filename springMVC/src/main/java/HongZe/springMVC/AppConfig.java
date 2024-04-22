@@ -1,6 +1,7 @@
 package HongZe.springMVC;
 
 import java.io.File;
+import java.util.Properties;
 
 import javax.sql.DataSource;
 
@@ -18,6 +19,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -40,9 +44,11 @@ import jakarta.servlet.ServletContext;
 @Configuration
 @ComponentScan
 @EnableTransactionManagement
+@EnableJms
 @EnableWebMvc
-@PropertySource("classpath:/jdbc.properties")
+@PropertySource({ "classpath:/jdbc.properties", "classpath:/smtp.properties", "classpath:/jms.properties" })
 public class AppConfig {
+//	---------start the tomcat-----------------------------------------
 	public static void main(String args[]) throws LifecycleException {
 		Tomcat tomcat = new Tomcat();
 		tomcat.setPort(Integer.getInteger("port", 8080));
@@ -57,6 +63,7 @@ public class AppConfig {
 		tomcat.getServer().await();
 	}
 
+//-----database configuration---------------------------------------------
 	@Bean
 	DataSource dataSource(@Value("${jdbc.url}") String jdbcUrl, @Value("${jdbc.username}") String jdbcUsername,
 			@Value("${jdbc.password}") String jdbcPassword) {
@@ -85,6 +92,7 @@ public class AppConfig {
 		return new DataSourceTransactionManager(dataSource);
 	}
 
+//---------------------webmvc configuration--------------------------------
 	@Bean
 	WebMvcConfigurer createWebMvcConfigurer(@Autowired HandlerInterceptor[] interceptors) {
 		return new WebMvcConfigurer() {
@@ -120,5 +128,29 @@ public class AppConfig {
 		viewResolver.setPrefix("/WEB-INF/templates/");
 		viewResolver.setSuffix("");
 		return viewResolver;
+	}
+
+	// -----------javamail configuration----------------------------
+	@Bean
+	JavaMailSender createJavaMailSender(@Value("${smtp.host}") String host, @Value("${smtp.port}") int port,
+			@Value("${smtp.auth}") String auth, @Value("${smtp.username}") String username,
+			@Value("${smtp.password}") String password, @Value("${smtp.debug:true}") String debug) {
+		var mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(host);
+		mailSender.setPort(port);
+		mailSender.setUsername(username);
+		mailSender.setPassword(password);
+		Properties props = mailSender.getJavaMailProperties();
+		props.put("mail.transport.protocal", "smtp");
+		props.put("mail.smtp.auth", auth);
+		props.put("mail.debug", debug);
+		if (port == 587) {
+			props.put("mail.smtp.starttls.enable", "true");
+		}
+		if (port == 465) {
+			props.put("mail.smtp.socketFactory.port", "465");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		}
+		return mailSender;
 	}
 }

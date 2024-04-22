@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import HongZe.springMVC.entity.User;
+import HongZe.springMVC.service.MailService;
 import HongZe.springMVC.service.UserService;
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +25,8 @@ public class UserController {
 	final Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	UserService userService;
+	@Autowired
+	MailService mailService;
 
 	@ExceptionHandler(RuntimeException.class)
 	private ModelAndView handleUnknowException(Exception ex) {
@@ -50,6 +53,7 @@ public class UserController {
 			@RequestParam("name") String name) {
 		User user = userService.register(email, password, name);
 		logger.info("user registered: {}", user.getEmail());
+		new Thread(() -> mailService.sendRegistrationMail(user)).start();// 发送注册成功邮件
 		return new ModelAndView("redirect:/signin");
 	}
 
