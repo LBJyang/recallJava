@@ -4,14 +4,14 @@
 
 	<filter>
 		<filter-name>async-filter</filter-name>
-		<filter-class>HongZe.springMVC.web.AsyncFilter
+		<filter-class>HongZe.springMVC.filter.AsyncFilter
 		</filter-class>
 		<async-supported>true</async-supported>
 	</filter>
 
 	<filter>
 		<filter-name>sync-filter</filter-name>
-		<filter-class>HongZe.springMVC.web.SyncFilter
+		<filter-class>HongZe.springMVC.filter.SyncFilter
 		</filter-class>
 	</filter>
 
