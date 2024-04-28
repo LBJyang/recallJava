@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.activemq.artemis.jms.client.ActiveMQJMSConnectionFactory;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
@@ -20,6 +21,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -32,6 +35,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -39,6 +44,7 @@ import HongZe.springMVC.orm.MyTemplate;
 import io.pebbletemplates.pebble.PebbleEngine;
 import io.pebbletemplates.pebble.loader.Servlet5Loader;
 import io.pebbletemplates.spring.servlet.PebbleViewResolver;
+import jakarta.jms.ConnectionFactory;
 import jakarta.servlet.ServletContext;
 
 @Configuration
@@ -130,6 +136,13 @@ public class AppConfig {
 		return viewResolver;
 	}
 
+	@Bean
+	ObjectMapper createObjectMapper() {
+		var om = new ObjectMapper();
+		om.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		return om;
+	}
+
 	// -----------javamail configuration----------------------------
 	@Bean
 	JavaMailSender createJavaMailSender(@Value("${smtp.host}") String host, @Value("${smtp.port}") int port,
@@ -152,5 +165,25 @@ public class AppConfig {
 			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		}
 		return mailSender;
+	}
+
+//	-----------JMS configuration----------------------------------------
+	@Bean
+	ConnectionFactory createConnectionFactory(@Value("${jms.properties:tcp://localhost:61616}") String url,
+			@Value("${jms.properties:admin}") String username, @Value("${jms.properties:password}") String password) {
+		return new ActiveMQJMSConnectionFactory(url, username, password);
+	}
+
+	@Bean
+	JmsTemplate creaJmsTemplate(@Autowired ConnectionFactory connectionFactory) {
+		return new JmsTemplate(connectionFactory);
+	}
+
+	@Bean("jmsListenerContainerFactory")
+	DefaultJmsListenerContainerFactory createDefaultJmsListenerContainerFactory(
+			@Autowired ConnectionFactory connectionFactory) {
+		var factory = new DefaultJmsListenerContainerFactory();
+		factory.setConnectionFactory(connectionFactory);
+		return factory;
 	}
 }

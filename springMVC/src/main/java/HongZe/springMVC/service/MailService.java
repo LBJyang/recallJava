@@ -2,6 +2,8 @@ package HongZe.springMVC.service;
 
 import java.time.LocalDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,6 +11,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import HongZe.springMVC.entity.User;
+import HongZe.springMVC.web.MailMessage;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -18,6 +21,8 @@ public class MailService {
 	String from;
 	@Autowired
 	JavaMailSender javaMailSender;
+
+	final Logger logger = LoggerFactory.getLogger(getClass());
 
 	public void sendRegistrationMail(User user) {
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -33,6 +38,16 @@ public class MailService {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
+	}
 
+	public void sendRegistrationMail(MailMessage mm) {
+		// TODO Auto-generated method stub
+		logger.info("[send mail] sending registration mail to {}...", mm.email);
+		// TODO: simulate a long-time task:
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+		}
+		logger.info("[send mail] registration mail was sent to {}.", mm.email);
 	}
 }

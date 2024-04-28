@@ -75,14 +75,14 @@ under the License.
       
       <!--
        This value was determined through a calculation.
-       Your system could perform 0.88 writes per millisecond
+       Your system could perform 0.89 writes per millisecond
        on the current journal configuration.
-       That translates as a sync write every 1132000 nanoseconds.
+       That translates as a sync write every 1120000 nanoseconds.
 
        Note: If you specify 0 the system will perform writes directly to the disk.
              We recommend this to be 0 if you are using journalType=MAPPED and journal-datasync=false.
       -->
-      <journal-buffer-timeout>1132000</journal-buffer-timeout>
+      <journal-buffer-timeout>1120000</journal-buffer-timeout>
 
 
       <!--
@@ -135,7 +135,7 @@ under the License.
       <critical-analyzer-policy>HALT</critical-analyzer-policy>
 
       
-      <page-sync-timeout>1132000</page-sync-timeout>
+      <page-sync-timeout>1120000</page-sync-timeout>
 
 
       <!-- the system will enter into page mode once you hit this limit. This is an estimate in bytes of how much the messages are using in memory

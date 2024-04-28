@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import HongZe.springMVC.entity.User;
 import HongZe.springMVC.service.MailService;
+import HongZe.springMVC.service.MessagingService;
 import HongZe.springMVC.service.UserService;
 import jakarta.servlet.http.HttpSession;
 
@@ -27,6 +30,8 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	MailService mailService;
+	@Autowired
+	MessagingService messagingService;
 
 	@ExceptionHandler(RuntimeException.class)
 	private ModelAndView handleUnknowException(Exception ex) {
@@ -53,6 +58,13 @@ public class UserController {
 			@RequestParam("name") String name) {
 		User user = userService.register(email, password, name);
 		logger.info("user registered: {}", user.getEmail());
+		// use JMS to send mail
+		try {
+			messagingService.sendMailMessage(MailMessage.registration(email, name));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		// use javaMail to send mail
 		new Thread(() -> mailService.sendRegistrationMail(user)).start();// 发送注册成功邮件
 		return new ModelAndView("redirect:/signin");
 	}
