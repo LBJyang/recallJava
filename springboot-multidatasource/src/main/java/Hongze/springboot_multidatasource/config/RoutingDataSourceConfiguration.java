@@ -1,4 +1,4 @@
-package com.itranswarp.learnjava.config;
+package Hongze.springboot_multidatasource.config;
 
 import java.util.Map;
 
@@ -40,7 +40,7 @@ public class RoutingDataSourceConfiguration {
 
 class RoutingDataSource extends AbstractRoutingDataSource {
 
-    final Logger logger = LoggerFactory.getLogger(getClass());
+	final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
 	protected Object determineCurrentLookupKey() {

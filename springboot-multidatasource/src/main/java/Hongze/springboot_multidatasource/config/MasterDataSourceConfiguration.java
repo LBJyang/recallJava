@@ -15,7 +15,7 @@ public class MasterDataSourceConfiguration {
 		return new DataSourceProperties();
 	}
 
-	@Bean("masterDataSource")
+	@Bean(RoutingDataSourceContext.MASTER_DATASOURCE)
 	DataSource dataSource(@Autowired @Qualifier("masterDataSourceProperties") DataSourceProperties props) {
 		return props.initializeDataSourceBuilder().build();
 	}

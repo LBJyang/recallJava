@@ -1,4 +1,4 @@
-package com.itranswarp.learnjava.service;
+package Hongze.springboot_multidatasource.service;
 
 import java.sql.Statement;
 
@@ -13,7 +13,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.itranswarp.learnjava.entity.User;
+import Hongze.springboot_multidatasource.entity.User;
+
 
 @Component
 @Transactional

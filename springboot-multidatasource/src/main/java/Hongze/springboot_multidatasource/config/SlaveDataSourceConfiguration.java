@@ -15,7 +15,7 @@ public class SlaveDataSourceConfiguration {
 		return new DataSourceProperties();
 	}
 
-	@Bean("slaveDataSource")
+	@Bean(RoutingDataSourceContext.SLAVE_DATASOURCE)
 	DataSource dataSource(@Autowired @Qualifier("slaveDataSourceProperties") DataSourceProperties props) {
 		return props.initializeDataSourceBuilder().build();
 	}

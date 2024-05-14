@@ -1,4 +1,4 @@
-package com.itranswarp.learnjava.entity;
+package Hongze.springboot_multidatasource.entity;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
